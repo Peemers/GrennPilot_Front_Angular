@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --gp-primary-green: #2d6a4f;
+  --gp-light-green: #d8f3dc;
+  --gp-white: #ffffff;
+}
+
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 450px;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.auth-card .card-header {
+  background-color: var(--gp-primary-green);
+  color: var(--gp-white);
+  padding: 2rem;
+  text-align: center;
+  border: none;
+}
+
+.auth-card .card-body {
+  padding: 2.5rem;
+}
+
+
+.btn-gp-success {
+  background-color: var(--gp-primary-green);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-gp-success:hover {
+  filter: brightness(90%);
+  transform: translateY(-2px);
+  color: white;
+}
+
+.btn-gp-success:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

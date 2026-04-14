@@ -1,0 +1,74 @@
+<div class="auth-wrapper">
+  <div class="card auth-card shadow-lg">
+
+    <div class="card-header text-center">
+      <h2><i class="bi bi-tree-fill me-2"></i>GreenPilot</h2>
+      <p class="mb-0">Connectez-vous pour piloter votre projet</p>
+    </div>
+
+    <div class="card-body">
+      @if (errorMessage()) {
+        <div class="alert alert-danger d-flex align-items-center mb-3" role="alert">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+          <div>{{ errorMessage() }}</div>
+        </div>
+      }
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="mb-3">
+          <label for="pseudo" class="form-label fw-bold">Pseudo</label>
+          <input
+            id="pseudo"
+            type="text"
+            formControlName="pseudo"
+            class="form-control"
+            [class.is-invalid]="loginForm.get('pseudo')?.invalid && loginForm.get('pseudo')?.touched"
+            placeholder="Nom d'utilisateur"
+          />
+          @if (loginForm.get('pseudo')?.invalid && loginForm.get('pseudo')?.touched) {
+            <div class="invalid-feedback d-block">Le pseudo est requis.</div>
+          }
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="form-label fw-bold">Mot de passe</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            class="form-control"
+            [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+            placeholder="••••••••"
+          />
+          @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+            <div class="invalid-feedback d-block">
+              @if (loginForm.get('password')?.errors?.['required']) { Le mot de passe est requis. }
+              @else if (loginForm.get('password')?.errors?.['minlength']) { 6 caractères minimum. }
+            </div>
+          }
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-gp-success w-100"
+          [disabled]="isLoading() || loginForm.invalid"
+        >
+          @if (isLoading()) {
+            <span class="spinner-border spinner-border-sm me-2"></span>
+            Connexion...
+          } @else {
+            Se connecter
+          }
+        </button>
+      </form>
+
+      <div class="text-center mt-4">
+        <p class="text-muted small">
+          Nouveau sur GreenPilot ?
+          <a routerLink="/register" class="text-success fw-bold text-decoration-none">Créer un compte</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

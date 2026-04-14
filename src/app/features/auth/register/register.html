@@ -1,0 +1,41 @@
+<div class="auth-wrapper">
+  <div class="card auth-card">
+
+    <div class="card-header">
+      <h2><i class="bi bi-person-plus-fill me-2"></i>Inscription</h2>
+      <p class="mb-0">Rejoignez la communauté GreenPilot</p>
+    </div>
+
+    <div class="card-body">
+      @if (errorMessage()) {
+        <div class="alert alert-danger mb-3">{{ errorMessage() }}</div>
+      }
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+          <label for="pseudo" class="form-label">Pseudo</label>
+          <input id="pseudo" type="text" formControlName="pseudo" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input id="email" type="email" formControlName="email" class="form-control">
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="form-label">Mot de passe</label>
+          <input id="password" type="password" formControlName="password" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-gp-success w-100" [disabled]="isLoading() || registerForm.invalid">
+          {{ isLoading() ? 'Création du compte...' : 'Créer mon compte' }}
+        </button>
+      </form>
+
+      <div class="text-center mt-3">
+        <a routerLink="/login" class="text-decoration-none" style="color: #2d6a4f;">Déjà inscrit ? Connectez-vous</a>
+      </div>
+    </div>
+  </div>
+</div>
