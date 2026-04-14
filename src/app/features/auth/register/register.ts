@@ -18,9 +18,9 @@ export class Register {
   isLoading = signal<boolean>(false);
 
   registerForm = this.fb.nonNullable.group({
-    pseudo: ['', Validators.required],
-    email: ['', Validators.required, Validators.email],
-    password: ['', Validators.required],
+    pseudo: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
   });
 
   onSubmit(): void {
