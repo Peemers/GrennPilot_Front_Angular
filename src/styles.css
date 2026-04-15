@@ -5,6 +5,10 @@
   --gp-white: #ffffff;
 }
 
+body{
+  background-color: #f4f7f6;
+}
+
 
 .auth-wrapper {
   min-height: 100vh;
